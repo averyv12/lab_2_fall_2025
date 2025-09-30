@@ -49,21 +49,29 @@ class ForwardKinematics(Node):
             )
 
         def rotation_y(angle):
-            ## TODO: Implement the rotation matrix about the y-axis
-            # return np.array([
-            # ])
-            raise NotImplementedError()
+            return np.array([
+                [np.cos(angle), 0, np.sin(angle), 0],
+                [0, 1, 0, 0],
+                [-np.sin(angle), 0, np.cos(angle), 0],
+                [0, 0, 0, 1],
+            ])
 
         def rotation_z(angle):
-            ## TODO: Implement the rotation matrix about the z-axis
-            # return np.array([
-            # ])
-            raise NotImplementedError()
+            return np.array([
+                [np.cos(angle), np.sin(angle), 0, 0],
+                [-np.sin(angle), np.cos(angle), 0, 0],
+                [0, 0, 1, 0],
+                [0, 0, 0, 1],
+            ])
 
         def translation(x, y, z):
             ## TODO: Implement the translation matrix
-            # return np.array([
-            # ])
+            return np.array([
+                [x],
+                [y],
+                [z],
+                [1],
+            ])
             raise NotImplementedError()
 
         # T_0_1 (base_link to leg_front_l_1)
@@ -71,11 +79,11 @@ class ForwardKinematics(Node):
 
         # T_1_2 (leg_front_l_1 to leg_front_l_2)
         ## TODO: Implement the transformation matrix from leg_front_l_1 to leg_front_l_2
-        T_1_2 = None
+        T_1_2 = translation(0,0, 0.03900) @ rotation_y(-1.57080) @ rotation_z(theta2)
 
         # T_2_3 (leg_front_l_2 to leg_front_l_3)
         ## TODO: Implement the transformation matrix from leg_front_l_2 to leg_front_l_3
-        T_2_3 = None
+        T_2_3 = 
 
         # T_3_ee (leg_front_l_3 to end-effector)
         T_3_ee = None
